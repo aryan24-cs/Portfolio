@@ -1,0 +1,605 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@layer base {
+  :root {
+    --background: 220 15% 8%;
+    --foreground: 220 10% 95%;
+
+    --card: 220 15% 12%;
+    --card-foreground: 220 10% 95%;
+
+    --popover: 220 15% 12%;
+    --popover-foreground: 220 10% 95%;
+
+    --primary: 263 85% 70%;
+    --primary-foreground: 220 15% 8%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 220 10% 95%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 220 10% 65%;
+
+    --accent: 263 85% 70%;
+    --accent-foreground: 220 15% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 263 85% 70%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 220 15% 10%;
+    --sidebar-foreground: 220 10% 90%;
+    --sidebar-primary: 263 85% 70%;
+    --sidebar-primary-foreground: 220 15% 8%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 220 10% 95%;
+    --sidebar-border: 220 15% 20%;
+    --sidebar-ring: 263 85% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    cursor: none;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    cursor: none;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent;
+  }
+
+  .glass-effect {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10;
+  }
+
+  .neon-border {
+    @apply border border-purple-500/30 hover:border-purple-400 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300;
+  }
+
+  .nav-link {
+    @apply relative text-muted-foreground hover:text-foreground transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  .fixed-button {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/25;
+  }
+
+  .fixed-button:hover {
+    transform: translateY(0) !important;
+  }
+
+  .project-card {
+    @apply relative overflow-hidden rounded-xl bg-card/50 backdrop-blur-sm border border-white/10 hover:border-purple-400/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/10;
+    animation: slideInUp 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  /* Technical Grid Animation */
+  .tech-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(139, 92, 246, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139, 92, 246, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMove 20s linear infinite;
+  }
+
+  /* Binary Rain Effect */
+  .binary-rain {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .binary-column {
+    position: absolute;
+    top: -100%;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: rgba(139, 92, 246, 0.3);
+    animation: binaryFall linear infinite;
+    white-space: pre;
+  }
+
+  /* Floating Code Snippets */
+  .code-snippet {
+    position: absolute;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: rgba(139, 92, 246, 0.4);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    animation: floatCode 15s ease-in-out infinite;
+  }
+
+  .code-1 {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+
+  .code-2 {
+    top: 60%;
+    right: 15%;
+    animation-delay: -5s;
+  }
+
+  .code-3 {
+    bottom: 30%;
+    left: 20%;
+    animation-delay: -10s;
+  }
+
+  .code-4 {
+    top: 40%;
+    right: 30%;
+    animation-delay: -7s;
+  }
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: all 0.1s ease;
+  backdrop-filter: blur(1px);
+}
+
+.custom-cursor-dot {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: rgb(139, 92, 246);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+}
+
+/* Enhanced Hero Background Animations */
+.floating-shapes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  animation: floatComplex 25s infinite linear;
+  opacity: 0.6;
+}
+
+.shape-1 {
+  width: 120px;
+  height: 120px;
+  top: 10%;
+  left: 5%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.2), rgba(236, 72, 153, 0.1));
+  animation-duration: 20s;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 180px;
+  height: 180px;
+  top: 70%;
+  right: 10%;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.2), rgba(139, 92, 246, 0.1));
+  animation-duration: 30s;
+  animation-direction: reverse;
+  animation-delay: -5s;
+}
+
+.shape-3 {
+  width: 90px;
+  height: 90px;
+  bottom: 20%;
+  left: 15%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.1));
+  animation-duration: 25s;
+  animation-delay: -10s;
+}
+
+.shape-4 {
+  width: 150px;
+  height: 150px;
+  top: 5%;
+  right: 25%;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.15), rgba(59, 130, 246, 0.1));
+  animation-duration: 35s;
+  animation-direction: reverse;
+  animation-delay: -15s;
+}
+
+.shape-5 {
+  width: 220px;
+  height: 220px;
+  bottom: 5%;
+  right: 0%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.1));
+  animation-duration: 40s;
+  animation-delay: -20s;
+}
+
+.shape-6 {
+  width: 100px;
+  height: 100px;
+  top: 40%;
+  left: 80%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.2), rgba(236, 72, 153, 0.1));
+  animation-duration: 18s;
+  animation-delay: -25s;
+}
+
+/* Solar System Styles */
+.solar-system-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sun {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+  animation: sunPulse 4s ease-in-out infinite;
+  z-index: 10;
+}
+
+.sun-content {
+  text-align: center;
+  color: #000;
+  font-weight: bold;
+}
+
+.orbit {
+  position: absolute;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 50%;
+  animation: rotate 20s linear infinite;
+}
+
+.orbit-1 {
+  width: 200px;
+  height: 200px;
+  animation-duration: 15s;
+}
+
+.orbit-2 {
+  width: 280px;
+  height: 280px;
+  animation-duration: 25s;
+}
+
+.orbit-3 {
+  width: 360px;
+  height: 360px;
+  animation-duration: 35s;
+}
+
+.orbit-4 {
+  width: 440px;
+  height: 440px;
+  animation-duration: 45s;
+}
+
+.planet {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  animation: counterRotate 20s linear infinite;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.planet:hover {
+  transform: scale(1.3);
+  filter: drop-shadow(0 0 15px rgba(139, 92, 246, 0.8));
+}
+
+.planet-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.planet-name {
+  font-size: 10px;
+  font-weight: 500;
+  margin-top: 4px;
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.planet-1-1 {
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-duration: 15s;
+}
+
+.planet-1-2 {
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-duration: 15s;
+  animation-delay: -7.5s;
+}
+
+.planet-2-1 {
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-duration: 25s;
+}
+
+.planet-2-2 {
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-duration: 25s;
+  animation-delay: -12.5s;
+}
+
+.planet-3-1 {
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-duration: 35s;
+}
+
+.planet-3-2 {
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-duration: 35s;
+  animation-delay: -17.5s;
+}
+
+.planet-4-1 {
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-duration: 45s;
+}
+
+.planet-4-2 {
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-duration: 45s;
+  animation-delay: -22.5s;
+}
+
+/* Enhanced Animations */
+@keyframes floatComplex {
+  0% {
+    transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-30px) translateX(20px) rotate(90deg) scale(1.1);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-15px) rotate(180deg) scale(0.9);
+  }
+  75% {
+    transform: translateY(15px) translateX(25px) rotate(270deg) scale(1.05);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(360deg) scale(1);
+  }
+}
+
+@keyframes sunPulse {
+  0%, 100% {
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.8);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes counterRotate {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(-360deg);
+  }
+}
+
+@keyframes slideInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Technical Animations */
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+@keyframes binaryFall {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes floatCode {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translateY(-20px) rotate(2deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-10px) rotate(-1deg);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateY(-30px) rotate(1deg);
+    opacity: 0.7;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.8);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .solar-system-container {
+    height: 400px;
+    max-width: 400px;
+  }
+
+  .sun {
+    width: 80px;
+    height: 80px;
+  }
+
+  .orbit-1 { width: 140px; height: 140px; }
+  .orbit-2 { width: 200px; height: 200px; }
+  .orbit-3 { width: 260px; height: 260px; }
+  .orbit-4 { width: 320px; height: 320px; }
+
+  .planet {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+
+  .shape {
+    display: none;
+  }
+}
